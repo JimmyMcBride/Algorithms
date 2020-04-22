@@ -4,17 +4,12 @@ import sys
 
 
 def rock_paper_scissors(n):
-    player = n - 1
-    rps = ["rock", "paper", "scissors"]
-    num_plays = len(rps)
-    num_perms = num_plays ** n
-    next_arr = [0] * num_perms * 1
-
-    for i in range(num_perms):
-        play = i % num_perms // num_plays ** (n - 1)
-        next_arr[i] = rps[play]
-
-    return next_arr
+    rps = [["rock", "paper", "scissors"]] * n
+    game_choice = []
+    grand_daddy_array = [game_choice]
+    for choice in rps:
+        grand_daddy_array = [x + [y] for x in grand_daddy_array for y in choice]
+    return grand_daddy_array
 
 
 print(rock_paper_scissors(2))
